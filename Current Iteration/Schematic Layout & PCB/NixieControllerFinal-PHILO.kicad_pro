@@ -464,7 +464,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "NixieControllerFinal.kicad_pro",
+    "filename": "NixieControllerFinal-PHILO.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -512,10 +512,11 @@
     "net_colors": null,
     "netclass_assignments": {
       "+12V": [
+        "HV_Power",
         "LV_Power"
       ],
       "+170V": [
-        "HV_Power"
+        "LV_Power"
       ],
       "+3.3V": [
         "LV_Power"
