@@ -9,8 +9,6 @@ KiCAD, STM32cube, and Solidworks are the design software used in this project.
 ## Wiring/Programming Development:
   ### Functionality in development:
   * I2S audio communication
-  * Driving 4 $\Omega$ speaker through the MAX98567A
-  * SD audio file reading
   * 3V Battery Backup
   * Battery-power mode
   * RTC timer setup
@@ -19,6 +17,8 @@ KiCAD, STM32cube, and Solidworks are the design software used in this project.
   
   ### Functionality tested in trial version:
   * Capacitive touch sensor
+  * Driving 4 $\Omega$ speaker through the MAX98567A
+  * SD audio file reading
   
   ### Wiring/Programming Finalized:
   * 5V-12V boost converter
@@ -39,6 +39,7 @@ KiCAD, STM32cube, and Solidworks are the design software used in this project.
 * Both the front and back edges will use an alumninum edge-banding (laser-cut) for strength and aesthetics, which is glued in place
 * Back plate will user a thicker aluminum to hold rotary encoders, and USB-C power input
 * Front plate is a piece of 1/8inch glass (waterjet cut, although could be made by hand) with a grey tint applied
+
 ### Items to be completed:
 * Mounting for rotary encoders, USB-C input, PCB
   *   Vector files for backplate
