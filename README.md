@@ -1,6 +1,7 @@
 # Nixie_Clock_STM32
 
-An STM32-based **Nixie-tube alarm clock** (HH:MM) with audio, SD storage, and a custom enclosure.
+An STM32-based **Nixie-tube alarm clock** (HH:MM) with audio, SD storage, and a custom enclosure. 
+Repository still in developement.
 
 > ⚠️ **High Voltage Warning**
 > Nixie tubes require a high-voltage supply (~170V for IN-12 used in this project). Treat the HV section as hazardous:
