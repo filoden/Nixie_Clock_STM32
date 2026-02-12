@@ -54,15 +54,15 @@ Repository still in developement.
 
 ---
 
-## Firmware Build / Flash (typical STM32 flow)
+## Firmware Build / Flash 
 
 1. Open the firmware project in **STM32CubeIDE** (or your VSCode + CMake workflow if you use one).
 2. Confirm CubeMX-generated peripherals match the board wiring (SPI for SD, I2S for audio, GPIO/EXTI for inputs).
-3. Build + flash via **ST-LINK**.
-4. Bring-up in this order:
+3. Ensure MIDWARE in additon to Middlwares are included in compilation
+4. Build + flash via **ST-LINK**.
+5. Bring-up in this order:
    1) power rails → 2) clocks/RTC → 3) SD/FatFs → 4) display/HV → 5) audio → 6) UI
 
-- PLEASE NOTE: for spi throughput to be able to supply i2s driver, a custom SD/SPI driver is used which is not yet included in the build. In the current configuration, SPI will not run. 
 ---
 
 ## PCB Development
