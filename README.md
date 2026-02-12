@@ -92,4 +92,4 @@ Repository still in developement.
 
 ## BOM
 
-A starter BOM is provided in `docs/BOM_starter.md` (or `bom.csv`) and is currently unpopulated.
+BOMs currently unpopulated
