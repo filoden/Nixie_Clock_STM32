@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Nixie_Clock_STM32",
+			"path": "."
+		},
+		{
+			"name": "Core",
+			"path": "../../FrnsFirstSTM32Project/Core"
+		}
+	],
+	"settings": {}
+}

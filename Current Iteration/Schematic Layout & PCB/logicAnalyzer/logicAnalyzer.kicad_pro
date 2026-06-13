@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 0.35,
-          "width": 1.625
+          "drill": 0.8,
+          "height": 1.27,
+          "width": 2.54
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -48,16 +48,10 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.1
+          "min_clearance": 0.5
         }
       },
-      "diff_pair_dimensions": [
-        {
-          "gap": 0.0,
-          "via_gap": 0.0,
-          "width": 0.0
-        }
-      ],
+      "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "meta": {
         "version": 2
@@ -79,7 +73,7 @@
         "footprint_filters_mismatch": "ignore",
         "footprint_symbol_mismatch": "warning",
         "footprint_type_mismatch": "ignore",
-        "hole_clearance": "warning",
+        "hole_clearance": "error",
         "hole_to_hole": "warning",
         "holes_co_located": "warning",
         "invalid_outline": "error",
@@ -186,9 +180,7 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [
-        0.0
-      ],
+      "track_widths": [],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
           "corner_radius_percentage": 80,
@@ -215,12 +207,7 @@
           "spacing": 0.6
         }
       },
-      "via_dimensions": [
-        {
-          "diameter": 0.0,
-          "drill": 0.0
-        }
-      ],
+      "via_dimensions": [],
       "zones_allow_external_fillets": false
     },
     "ipc2581": {
@@ -464,7 +451,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "NixieControllerFinal-PHILO.kicad_pro",
+    "filename": "logicAnalyzer.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -486,264 +473,24 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "name": "HS_Signal",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "name": "HV_Power",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "name": "LV_Power",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
       }
     ],
     "meta": {
       "version": 4
     },
     "net_colors": null,
-    "netclass_assignments": {
-      "+12V": [
-        "HV_Power",
-        "LV_Power"
-      ],
-      "+170V": [
-        "LV_Power"
-      ],
-      "+3.3V": [
-        "LV_Power"
-      ],
-      "+5V": [
-        "LV_Power"
-      ],
-      "/5V_IN": [
-        "LV_Power"
-      ],
-      "/AU_BCLK": [
-        "HS_Signal"
-      ],
-      "/AU_DIN": [
-        "HS_Signal"
-      ],
-      "/AU_LRCLK": [
-        "HS_Signal"
-      ],
-      "/CAP_SCL": [
-        "HS_Signal"
-      ],
-      "/CAP_SDA": [
-        "HS_Signal"
-      ],
-      "/CLK": [
-        "HS_Signal"
-      ],
-      "/Din": [
-        "HS_Signal"
-      ],
-      "/FB": [
-        "LV_Power"
-      ],
-      "/HV_CLK": [
-        "HS_Signal"
-      ],
-      "/HV_DIN": [
-        "HS_Signal"
-      ],
-      "/SD_MISO": [
-        "HS_Signal"
-      ],
-      "/SD_MOSI": [
-        "HS_Signal"
-      ],
-      "/SD_NSS": [
-        "HS_Signal"
-      ],
-      "/SD_SCK": [
-        "HS_Signal"
-      ],
-      "/SW": [
-        "LV_Power"
-      ],
-      "/SWCLK": [
-        "HS_Signal"
-      ],
-      "/SWDIO": [
-        "HS_Signal"
-      ],
-      "/USB_DN": [
-        "HS_Signal"
-      ],
-      "/USB_DP": [
-        "HS_Signal"
-      ],
-      "GND": [
-        "LV_Power"
-      ],
-      "Net-(D1-A)": [
-        "LV_Power"
-      ],
-      "Net-(D2-A)": [
-        "LV_Power"
-      ],
-      "Net-(J1-Pin_1)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_10)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_2)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_3)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_4)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_5)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_6)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_7)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_8)": [
-        "HV_Power"
-      ],
-      "Net-(J1-Pin_9)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_1)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_10)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_2)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_3)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_4)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_5)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_6)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_7)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_8)": [
-        "HV_Power"
-      ],
-      "Net-(J3-Pin_9)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_1)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_10)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_2)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_3)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_4)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_5)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_6)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_7)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_8)": [
-        "HV_Power"
-      ],
-      "Net-(J4-Pin_9)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_1)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_10)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_2)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_3)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_4)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_5)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_6)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_7)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_8)": [
-        "HV_Power"
-      ],
-      "Net-(J5-Pin_9)": [
-        "HV_Power"
-      ],
-      "Net-(U11-FB)": [
-        "LV_Power"
-      ],
-      "Net-(U1A-DATA_OUT)": [
-        "HS_Signal"
-      ]
-    },
-    "netclass_patterns": [
-      {
-        "netclass": "HV_Power",
-        "pattern": "+170V"
-      },
-      {
-        "netclass": "LV_Power",
-        "pattern": "+170V"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "/SD_NSS"
-      }
-    ]
+    "netclass_assignments": null,
+    "netclass_patterns": []
   },
   "pcbnew": {
     "last_paths": {
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "C:/Users/russe/Downloads/",
+      "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "NixieControllerFinal-PHILO.step",
+      "step": "",
       "svg": "",
       "vrml": ""
     },
@@ -813,36 +560,12 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
-        },
-        {
-          "group_by": false,
-          "label": "Sim.Pins",
-          "name": "Sim.Pins",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Sim.Device",
-          "name": "Sim.Device",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Description",
-          "name": "Description",
-          "show": false
-        },
-        {
-          "group_by": false,
-          "label": "#",
-          "name": "${ITEM_NUMBER}",
-          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "",
+      "name": "Default Editing",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -886,11 +609,6 @@
     "subpart_first_id": 65,
     "subpart_id_separator": 0
   },
-  "sheets": [
-    [
-      "247ae72c-fbda-46bd-98a2-f48c48e695ef",
-      "Root"
-    ]
-  ],
+  "sheets": [],
   "text_variables": {}
 }
