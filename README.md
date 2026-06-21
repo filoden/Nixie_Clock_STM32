@@ -4,7 +4,7 @@ An STM32-based **Nixie-tube alarm clock** (HH:MM) with audio, SD storage, and a 
 Repository still in developement.
 
 > ⚠️ **High Voltage Warning**
-> Nixie tubes require a high-voltage supply (~170V for IN-12 used in this project). Treat the HV section as hazardous:
+> Nixie tubes require a high-voltage supply (~170VDC for IN-12 used in this project). Basic HV safety knowledge is necessary to avoid injury and or death.
 
 ---
 
@@ -35,22 +35,24 @@ Repository still in developement.
 **Finalized (wiring/programming)**
 - 5V → 12V boost (logic-side power rail)
 - SPI / I2C communication
-- Rotary encoders + push switches
+- Rotary encoders
 - 5V → 3.3V LDO
 
 ---
 
 ## Hardware Overview (high level)
 
-- **MCU:** STM32 (exact part depends on PCB revision)
-- **Inputs/UI:** rotary encoder(s), push buttons, capacitive touch
+- **MCU:** STM32G0B1RETx6
+- **UX/UI:** rotary encoder(s) (One encouder includes a push button), capacitive touch
 - **Timekeeping:** STM32 RTC + external LSE crystal (or dedicated RTC module, depending on revision)
 - **Storage:** microSD over SPI (FatFs)
 - **Audio:** I2S to class-D amp (MAX98567A) → 4Ω speaker
+- **Driving Nixie Tubes** STM MCU drives serial into a 12V level shifter which drives HV5622PG chips. These chips switch the tubes using an external 170V DC source.
+- **Capacitive touch senor** Conductive edge banding surrounds large portions of controller. CAP1206 IC interprets changes in banding capacitance and communicates over I2C to MCU.
 - **Power:**
   - USB-C 5V input (mechanical + ESD considerations)
   - 3.3V rail for logic
-  - HV rail for Nixie tubes (separate boost converter)
+  - HV rail for Nixie tubes (external boost converter)
 
 ---
 
@@ -60,7 +62,7 @@ Repository still in developement.
 2. Confirm CubeMX-generated peripherals match the board wiring (SPI for SD, I2S for audio, GPIO/EXTI for inputs).
 3. Ensure MIDWARE in additon to Middlwares are included in compilation
 4. Build + flash via **ST-LINK**.
-5. Bring-up in this order:
+5. To avoid frustration, bring-up in this order:
    1) power rails → 2) clocks/RTC → 3) SD/FatFs → 4) display/HV → 5) audio → 6) UI
 
 ---
@@ -68,8 +70,9 @@ Repository still in developement.
 ## PCB Development
 
 - **V1 PCB:** learning spin (many layout mistakes)
-- **V2 PCB:** pending completion of wiring/programming development - most up to date version located in current iteration.
-
+- **V2 PCB:** pending completion of wiring/programming development - most up to date version located in current iteration. 
+### To-do
+- External oscillator addition and testing
 ---
 
 ## Enclosure Development
@@ -83,13 +86,13 @@ Repository still in developement.
 - **Front plate:** 1/8" glass (waterjet preferred; hand-fab possible) with a grey tint
 
 ### To-do
-- Mechanical mounting: rotary encoders, USB-C input, PCB
 - Vector files: back plate, glass face, edge banding
-- Enclosure feet
-- Generate + maintain BOM
+- Finalize BOM
+- Investigate use of waterjet for custom glass face
 
 ---
 
 ## BOM
+- PCB BOM currently matches latest revision
+- Enclosure BOM is out of date
 
-BOMs currently unpopulated
