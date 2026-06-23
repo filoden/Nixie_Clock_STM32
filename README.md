@@ -53,7 +53,14 @@ Repository still in developement.
   - USB-C 5V input (mechanical + ESD considerations)
   - 3.3V rail for logic
   - HV rail for Nixie tubes (external boost converter)
-
+### Schematic Preview
+![Schematic](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Schematic%20Layout%20%26%20PCB/Schematic_Layout_Preview.png)
+### Block Diagram
+![Block Diagram](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Block_Diagram.png)
+#### Notes:
+- All Power lines are written in red text
+- Arrow direction denotes either flow of power or data (although JTAG should be bidirectional)
+- Ground for IN12 Tubes is omitted
 ---
 
 ## Firmware Build / Flash 
@@ -73,6 +80,8 @@ Repository still in developement.
 - **V2 PCB:** pending completion of wiring/programming development - most up to date version located in current iteration. 
 ### To-do
 - External oscillator addition and testing
+### PCB Preview
+ ![Current Revision](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Schematic%20Layout%20%26%20PCB/PCB_Layout_Preview.png)
 ---
 
 ## Enclosure Development
@@ -89,7 +98,9 @@ Repository still in developement.
 - Vector files: back plate, glass face, edge banding
 - Finalize BOM
 - Investigate use of waterjet for custom glass face
-
+### Enclosure Preview
+![Enclosure Front](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Enclosure/Enclosure_Preview_Front.png)
+![Enclosure Back](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Enclosure/Enclosure_Preview_Back.png)
 ---
 
 ## BOM
