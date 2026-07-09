@@ -14,6 +14,9 @@ Repository still in developement.
 
 **Repo structure**
 - `Current Iteration/` – active hardware + firmware
+  - `Current Iteration/Enclosure`
+  - `Current Iteration/STM32 Project Files and Code`
+  - `Current Iteration/Schematic Layout & PCB`
 - `Old_Versions/` – previous spins / archived work
 
 ---
@@ -23,38 +26,42 @@ Repository still in developement.
 ### Firmware / Electronics (status)
 **In development**
 - low power / battery-power mode
-- RTC timer setup
 - Oscillator bring-up / stability checks
 
 **Tested (prototype version)**
-- I2S audio communication
 - Capacitive touch input
-- Audio output: driving a 4Ω speaker through the MAX98567A
-- SD audio file reading
+
 
 **Finalized (wiring/programming)**
-- 5V → 12V boost (logic-side power rail)
+- I2S audio communication
+- 5V → 12V boost 
 - SPI / I2C communication
 - Rotary encoders
 - 5V → 3.3V LDO
+- Audio output: driving a 4Ω speaker through the MAX98567A (except for bulk cap)
+- SD audio file reading
 
+  
 ---
 
 ## Hardware Overview (high level)
 
 - **MCU:** STM32G0B1RETx6
 - **UX/UI:** rotary encoder(s) (One encouder includes a push button), capacitive touch
-- **Timekeeping:** STM32 RTC + external LSE crystal (or dedicated RTC module, depending on revision)
+- **Timekeeping:** STM32 RTC + external LSE oscillator
 - **Storage:** microSD over SPI (FatFs)
 - **Audio:** I2S to class-D amp (MAX98567A) → 4Ω speaker
 - **Driving Nixie Tubes** STM MCU drives serial into a 12V level shifter which drives HV5622PG chips. These chips switch the tubes using an external 170V DC source.
 - **Capacitive touch senor** Conductive edge banding surrounds large portions of controller. CAP1206 IC interprets changes in banding capacitance and communicates over I2C to MCU.
 - **Power:**
   - USB-C 5V input (mechanical + ESD considerations)
+  - 5V enters Linear low-dropout regulator -> 3.3V 
   - 3.3V rail for logic
   - HV rail for Nixie tubes (external boost converter)
+  - Battery backup is used for logic, oscillator, amplifier, and capacitive touch sensor in the event of 5V loss
+  - Battery and 3.3V power is controlled using NID5100, low-forward voltage drop diodes.
 ### Schematic Preview
-![Schematic](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Schematic%20Layout%20%26%20PCB/Schematic_Layout_Preview.png)
+![Schematic](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Schematic%20Layout%20%26%20PCB/Schematic_Preview.png)
 ### Block Diagram
 ![Block Diagram](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Block_Diagram.png)
 #### Notes:
@@ -65,9 +72,8 @@ Repository still in developement.
 
 ## Firmware Build / Flash 
 
-1. Open the firmware project in **STM32CubeIDE** (or your VSCode + CMake workflow if you use one).
-2. Confirm CubeMX-generated peripherals match the board wiring (SPI for SD, I2S for audio, GPIO/EXTI for inputs).
-3. Ensure MIDWARE in additon to Middlwares are included in compilation
+1. Open the firmware project in **STM32CubeIDE**.
+2. Confirm CubeMX-generated peripherals match the board wiring (SPI for SD, I2S for audio, GPIO/EXTI for inputs). Make sure to include separate driver files. 
 4. Build + flash via **ST-LINK**.
 5. To avoid frustration, bring-up in this order:
    1) power rails → 2) clocks/RTC → 3) SD/FatFs → 4) display/HV → 5) audio → 6) UI
@@ -75,12 +81,16 @@ Repository still in developement.
 ---
 
 ## PCB Development
-
+Current version consists of a single main board with three separate smaller boards (separated by user) for the rotary encoder circuitry.
 - **V1 PCB:** learning spin (many layout mistakes)
-- **V2 PCB:** pending completion of wiring/programming development - most up to date version located in current iteration. 
+- **V2 PCB:** More fully built out, includes all relevent IO.
+- **V3 PCB:** pending completion of wiring/programming development - most up to date version located in current iteration. 
 ### To-do
-- External oscillator addition and testing
+- External LSE oscillator testing
+- Fix bulk capacitor situation for audio amp
+- Add v-groove for rotary encoders
 ### PCB Preview
+**V3 PCB:**
  ![Current Revision](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Schematic%20Layout%20%26%20PCB/PCB_Layout_Preview.png)
 ---
 
@@ -97,7 +107,7 @@ Repository still in developement.
 ### To-do
 - Vector files: back plate, glass face, edge banding
 - Finalize BOM
-- Investigate use of waterjet for custom glass face
+- Investigate use of waterjet for glass face
 ### Enclosure Preview
 ![Enclosure Front](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Enclosure/Enclosure_Preview_Front.png)
 ![Enclosure Back](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Enclosure/Enclosure_Preview_Back.png)
