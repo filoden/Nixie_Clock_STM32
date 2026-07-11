@@ -70,13 +70,27 @@ Repository still in developement.
 - Ground for IN12 Tubes is omitted
 ---
 
-## Firmware Build / Flash 
-
+## Firmware Development 
+### Build / Flash 
 1. Open the firmware project in **STM32CubeIDE**.
 2. Confirm CubeMX-generated peripherals match the board wiring (SPI for SD, I2S for audio, GPIO/EXTI for inputs). Make sure to include separate driver files. 
 4. Build + flash via **ST-LINK**.
 5. To avoid frustration, bring-up in this order:
    1) power rails → 2) clocks/RTC → 3) SD/FatFs → 4) display/HV → 5) audio → 6) UI
+### Developed Items:
+#### 1. UI FSM
+- UI is structured as an FSM. Programmatically each input will trigger a user-input function for each respective input (knob A turns CC, knob B turns C, etc.. Each function consists of a long switch case which maps the appropriate response to an input for a given state. Relevant code is in UserInterface source and header files. FSM can be seen below.
+<img src="https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/UI%20FSM.png" width="70%">
+<img src="https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/UI_FSM_Cont.png" width="50%">
+
+### Developed but Undocumented 
+#### 2. DMA music playing
+#### 3. Nixie driver control logic
+#### 4. Capacitive touch sensor / I2C
+#### 5. Music file handling
+#### 6. RTC timers
+### Undeveloped
+#### 7. Blackout Mode
 
 ---
 
