@@ -78,7 +78,7 @@ Repository still in developement.
 4. Build + flash via **ST-LINK**.
 5. To avoid frustration, bring-up in this order:
 ### Firmware Development (Status):
-#### Integration:
+### Integration:
 **1. UI FSM**
 - UI is structured as an FSM. Programmatically each input will trigger a user-input function for each respective input (knob A turns CC, knob B turns C, etc.. Each function consists of a long switch case which maps the appropriate response to an input for a given state. Relevant code is in UserInterface source and header files. FSM can be seen below.
 <img src="https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/UI%20FSM.png" width="70%">
@@ -86,23 +86,42 @@ Repository still in developement.
 
 
 
-**Notes to come: 2. DMA music playing/3. SD card interface/4. Capacitive touch sensor/5. Music FIle Parsing**
-#### In development:
-**Nixie Driver Logix**
-**2. Nixie driver control logic**
+**Notes to come:**
+
+**2. DMA music playing**
+
+**3. SD card interface**
+
+**4. Capacitive touch sensor**
+
+**5. Music FIle Parsing**
+
+
+
+### In development:
+
+**6. Nixie driver control logic**
+
 - Nixie tubes require 170VDC switching. Thankfully, Many old display tubes and other vintage electronics require high voltage DC. Since there is still demand for this technology an old (relatively speaking) serial to parallel high voltage switching IC known as the HV5622PG is still in production. This $8 chip can handle up to 250VDC and requires a ridiculous 12V logic level. The Nixie driver control logic tells this chip which digits to turn on. Importantly, it must also make sure that no more than one digit is driven at a time, as this can easily destroy the tube. Additionally, it is necesary to include PWM control to allow for dimming, and to be easily accessible by other parts of the code.
 - Requirements: 
-- - Checks to ensure there is no double digit driving
-- - Dimming Control
-- - Simple function call
-**Low-Power (Blackout) Handling**
-- Requirements:
-- - Set Pins to LOW (Remove any Pullups as well): Nixie Driving GPIO, JTAG, SD_CARD, CAP1206, knobs B/C
-- - Following Interfaces to remain as normal: MAX98357A
-- - Sense Power-outage via ST pin on NID5100
-- - Be able to play low power alarm song stored solely in on-chip memory
-**New external LSE with RTC implementation**
+  - Checks to ensure there is no double digit driving
+  - Dimming Control
+  - Simple function call
 
+**7. Low-Power (Blackout) Handling**
+
+Requirements:
+  - Set Pins to LOW (Remove any Pullups as well): Nixie Driving GPIO, JTAG, SD_CARD, CAP1206, knobs B/C
+  - Following Interfaces to remain as normal: MAX98357A
+  - Sense Power-outage via ST pin on NID5100
+  - Be able to play low power alarm song stored solely in on-chip memory
+
+**8. New external LSE with RTC implementation**
+
+Requirements:
+  - Initialization
+  - Maintain RTC control through momentary resets
+  - Calibration (?)
 ---
 
 ## PCB Development
@@ -112,8 +131,9 @@ Current version consists of a single main board with three separate smaller boar
 - **V3 PCB:** pending completion of wiring/programming development - most up to date version located in current iteration. 
 ### To-do
 - External LSE oscillator testing
-- Fix bulk capacitor situation for audio amp
-- Add v-groove for rotary encoders
+- Add AA discharge protection
+- Connext NCH6100HV Directly to 5V rail instead of 12V
+- Much more
 ### PCB Preview
 **V3 PCB:**
  ![Current Revision](https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/Schematic%20Layout%20%26%20PCB/PCB_Layout_Preview.png)
