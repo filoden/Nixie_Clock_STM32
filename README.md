@@ -23,7 +23,7 @@ Repository still in developement.
 
 ## Features
 
-### Firmware / Electronics (status)
+### Hardware / Electronics (status)
 **In development**
 - low power / battery-power mode
 - Oscillator bring-up / stability checks
@@ -32,10 +32,11 @@ Repository still in developement.
 - Capacitive touch input
 
 
-**Finalized (wiring/programming)**
+**Finalized**
 - I2S audio communication
 - 5V → 12V boost 
 - SPI / I2C communication
+- SD Card Interface
 - Rotary encoders
 - 5V → 3.3V LDO
 - Audio output: driving a 4Ω speaker through the MAX98567A (except for bulk cap)
@@ -70,27 +71,37 @@ Repository still in developement.
 - Ground for IN12 Tubes is omitted
 ---
 
-## Firmware Development 
+## Firmware 
 ### Build / Flash 
 1. Open the firmware project in **STM32CubeIDE**.
-2. Confirm CubeMX-generated peripherals match the board wiring (SPI for SD, I2S for audio, GPIO/EXTI for inputs). Make sure to include separate driver files. 
+2. Confirm CubeMX-generated peripherals match the board wiring (SPI for SD, I2S for audio, GPIO/EXTI for inputs). Make sure to include separate driver files for FATFS (Provided by CubeMX). 
 4. Build + flash via **ST-LINK**.
 5. To avoid frustration, bring-up in this order:
-   1) power rails → 2) clocks/RTC → 3) SD/FatFs → 4) display/HV → 5) audio → 6) UI
-### Developed Items:
-#### 1. UI FSM
+### Firmware Development (Status):
+#### Integration:
+**1. UI FSM**
 - UI is structured as an FSM. Programmatically each input will trigger a user-input function for each respective input (knob A turns CC, knob B turns C, etc.. Each function consists of a long switch case which maps the appropriate response to an input for a given state. Relevant code is in UserInterface source and header files. FSM can be seen below.
 <img src="https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/UI%20FSM.png" width="70%">
 <img src="https://github.com/filoden/Nixie_Clock_STM32/blob/main/Current%20Iteration/UI_FSM_Cont.png" width="50%">
 
-### Developed but Undocumented 
-#### 2. DMA music playing
-#### 3. Nixie driver control logic
-#### 4. Capacitive touch sensor / I2C
-#### 5. Music file handling
-#### 6. RTC timers
-### Undeveloped
-#### 7. Blackout Mode
+
+
+**Notes to come: 2. DMA music playing/3. SD card interface/4. Capacitive touch sensor/5. Music FIle Parsing**
+#### In development:
+**Nixie Driver Logix**
+**2. Nixie driver control logic**
+- Nixie tubes require 170VDC switching. Thankfully, Many old display tubes and other vintage electronics require high voltage DC. Since there is still demand for this technology an old (relatively speaking) serial to parallel high voltage switching IC known as the HV5622PG is still in production. This $8 chip can handle up to 250VDC and requires a ridiculous 12V logic level. The Nixie driver control logic tells this chip which digits to turn on. Importantly, it must also make sure that no more than one digit is driven at a time, as this can easily destroy the tube. Additionally, it is necesary to include PWM control to allow for dimming, and to be easily accessible by other parts of the code.
+- Requirements: 
+- - Checks to ensure there is no double digit driving
+- - Dimming Control
+- - Simple function call
+**Low-Power (Blackout) Handling**
+- Requirements:
+- - Set Pins to LOW (Remove any Pullups as well): Nixie Driving GPIO, JTAG, SD_CARD, CAP1206, knobs B/C
+- - Following Interfaces to remain as normal: MAX98357A
+- - Sense Power-outage via ST pin on NID5100
+- - Be able to play low power alarm song stored solely in on-chip memory
+**New external LSE with RTC implementation**
 
 ---
 

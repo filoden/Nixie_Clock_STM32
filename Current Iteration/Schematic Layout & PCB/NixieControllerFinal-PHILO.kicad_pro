@@ -52,18 +52,18 @@
         "zones": {
           "border_display_style": 0,
           "border_hatch_pitch": 0.5,
-          "corner_radius": 0.0,
-          "corner_smoothing": 1,
+          "corner_radius": 0.1,
+          "corner_smoothing": 2,
           "fill_mode": 0,
           "hatch_gap": 1.5,
           "hatch_orientation": 0.0,
           "hatch_smoothing_level": 0,
           "hatch_smoothing_value": 0.1,
           "hatch_thickness": 1.0,
-          "min_clearance": 0.75,
+          "min_clearance": 0.05,
           "min_island_area": 10.0,
-          "min_thickness": 0.25,
-          "pad_connection": 1,
+          "min_thickness": 0.2,
+          "pad_connection": 2,
           "remove_islands": 0,
           "thermal_relief_gap": 0.5,
           "thermal_relief_spoke_width": 0.5
@@ -533,22 +533,30 @@
       {
         "name": "HS_Signal",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "tuning_profile": ""
       },
       {
-        "clearance": 0.5,
+        "clearance": 0.75,
+        "name": "HV_170",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "tuning_profile": ""
+      },
+      {
+        "clearance": 0.2,
         "name": "HV_Power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
+        "priority": 3,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "tuning_profile": ""
       },
       {
         "name": "LV_Power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "tuning_profile": ""
       }
@@ -563,7 +571,7 @@
         "LV_Power"
       ],
       "+170V": [
-        "HV_Power",
+        "HV_170",
         "LV_Power"
       ],
       "+3.3V": [
@@ -788,7 +796,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "C:/Users/russe/Downloads/",
+      "plot": "C:/Users/Apath/Downloads/KiCad Plots/NIXIE_GERBER_REV4/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "NixieControllerFinal-PHILO.step",
@@ -803,7 +811,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "${PROJECTNAME}.csv",
+    "bom_export_filename": "C:\\Users\\Apath\\Downloads\\KiCad Plots\\NixieControllerFinal-PHILO2.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -843,16 +851,16 @@
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "Exclude from BOM",
           "name": "${EXCLUDE_FROM_BOM}",
-          "show": true
+          "show": false
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -882,13 +890,13 @@
           "group_by": false,
           "label": "Description",
           "name": "Description",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
           "label": "#",
           "name": "${ITEM_NUMBER}",
-          "show": false
+          "show": true
         }
       ],
       "filter_string": "",
@@ -947,7 +955,7 @@
         "uuid": "247ae72c-fbda-46bd-98a2-f48c48e695ef"
       }
     ],
-    "used_designators": "SI1,#PWR14,#PWR50-52,#PWR69,#PWR72-73,C25,C32,C34-36,J2,J10",
+    "used_designators": "SI1,#PWR14,#PWR50-52,#PWR56,#PWR69,#PWR72-73,C25,C30,C32,C34-37,J2,J10,U12",
     "variants": []
   },
   "sheets": [
